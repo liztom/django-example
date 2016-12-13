@@ -17,6 +17,12 @@ class Film(models.Model):
         Genre,
         on_delete=models.CASCADE,
     )
+    owner = models.ForeignKey(
+        'auth.User', 
+        related_name='films', #instead of film_set, you can just use films
+        on_delete=models.CASCADE,
+        null=True
+    )
 
     class Meta:
         ordering = ('-title',)
@@ -24,7 +30,7 @@ class Film(models.Model):
     def __str__(self):
         return self.title
 
-
+    
 class Theater(models.Model):
     name = models.CharField(max_length=100, blank=True, default='')
     city = models.CharField(max_length=100, blank=True, default='')

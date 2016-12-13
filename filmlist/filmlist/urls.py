@@ -17,16 +17,18 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from rest_framework.urlpatterns import format_suffix_patterns
-from films import views4
+from films import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^films$', views4.FilmList.as_view()), 
-    url(r'^films/(?P<pk>[0-9]+)$', views4.FilmDetail.as_view()),
-    url(r'^theaters$', views4.TheaterList.as_view()),
-    url(r'^theaters/(?P<pk>[0-9]+)$', views4.TheaterDetail.as_view()),
-    url(r'^genres$', views4.GenreList.as_view()),
-    url(r'^genres/(?P<pk>[0-9]+)$', views4.GenreDetail.as_view()),
+    url(r'^films$', views.FilmList.as_view()), 
+    url(r'^films/(?P<pk>[0-9]+)$', views.FilmDetail.as_view()),
+    url(r'^theaters$', views.TheaterList.as_view()),
+    url(r'^theaters/(?P<pk>[0-9]+)$', views.TheaterDetail.as_view()),
+    url(r'^genres$', views.GenreList.as_view()),
+    url(r'^genres/(?P<pk>[0-9]+)$', views.GenreDetail.as_view()),
+    url(r'^users/$', views.UserList.as_view()),
+    url(r'^users/(?P<pk>[0-9]+)/$', views.UserDetail.as_view()),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
